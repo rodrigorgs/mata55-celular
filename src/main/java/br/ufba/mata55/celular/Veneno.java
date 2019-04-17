@@ -1,6 +1,7 @@
 package br.ufba.mata55.celular;
 
-import processing.core.PApplet;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Veneno extends Entidade {
 	private Cor cor;
@@ -29,13 +30,13 @@ public class Veneno extends Entidade {
 		}
 	}
 	
-	public void desenha(PApplet app) {
+	public void desenha(Graphics g) {
 		int x = centro.getX();
 		int y = centro.getY();
-		app.fill(cor.getR(), cor.getG(), cor.getB());
-		app.rect(x - tamanho / 2.0f, y - tamanho / 2.0f, tamanho, tamanho);
-		app.fill(0, 0, 255);
-		app.ellipse(x, y, tamanho, tamanho);
+		g.setColor(new Color(cor.getR(), cor.getG(), cor.getB()));
+		g.fillRect(x - tamanho / 2, y - tamanho / 2, tamanho, tamanho);
+		g.setColor(new Color(0, 0, 255));
+		g.fillOval(x - tamanho / 2, y - tamanho / 2, tamanho, tamanho);
 	}
 	
 	public Cor getCor() {

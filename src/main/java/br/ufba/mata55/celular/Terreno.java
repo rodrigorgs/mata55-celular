@@ -1,9 +1,9 @@
 package br.ufba.mata55.celular;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Collection;
-
-import processing.core.PApplet;
 
 public class Terreno {
 	private int largura;
@@ -19,21 +19,21 @@ public class Terreno {
 		celula = new Celula();
 	}
 
-	public void desenha(PApplet app) {
-		atualiza(app);
+	public void desenha(Graphics g) {
+		atualiza(g);
 		
-		app.fill(0, 0, 0);
-		app.rect(0, 0, largura, altura);
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, largura, altura);
 		
-		celula.desenha(app);
+		celula.desenha(g);
 		
 		for (Entidade item : itens) {
-			item.desenha(app);
+			item.desenha(g);
 		}
 	}
 
-	private void atualiza(PApplet app) {	
-		criaItensAleatorios(app);
+	private void atualiza(Graphics g) {	
+		criaItensAleatorios();
 		processaColisao();
 		removeMortos();
 	}
@@ -46,14 +46,15 @@ public class Terreno {
 		}
 	}
 
-	private void criaItensAleatorios(PApplet app) {
-		if (Math.random() < 0.01) {
-			Comida comida = new Comida(app.width, app.height);
+	private void criaItensAleatorios() {
+		double limiar = 0.03;
+		if (Math.random() < limiar) {
+			Comida comida = new Comida(largura, altura);
 			itens.add(comida);
 			System.out.println("Nova comida: " + comida);
 		}
-		if (Math.random() < 0.01) {
-			Veneno veneno = new Veneno(app.width, app.height);
+		if (Math.random() < limiar) {
+			Veneno veneno = new Veneno(largura, altura);
 			itens.add(veneno);
 			System.out.println("Novo veneno: " + veneno);
 			

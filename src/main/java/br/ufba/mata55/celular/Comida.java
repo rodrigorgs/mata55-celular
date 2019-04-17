@@ -1,6 +1,7 @@
 package br.ufba.mata55.celular;
 
-import processing.core.PApplet;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Comida extends Entidade {
 	private Cor cor;
@@ -28,9 +29,9 @@ public class Comida extends Entidade {
 		}
 	}
 	
-	public void desenha(PApplet app) {
-		app.fill(cor.getR(), cor.getG(), cor.getB());
-		app.rect(centro.getX() - tamanho / 2.0f, centro.getY() - tamanho / 2.0f, tamanho, tamanho);
+	public void desenha(Graphics g) {
+		g.setColor(new Color(cor.getR(), cor.getG(), cor.getB()));
+		g.fillRect(centro.getX() - tamanho / 2, centro.getY() - tamanho / 2, tamanho, tamanho);
 	}
 	
 	public Cor getCor() {

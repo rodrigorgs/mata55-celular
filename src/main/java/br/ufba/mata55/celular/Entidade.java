@@ -1,6 +1,6 @@
 package br.ufba.mata55.celular;
 
-import processing.core.PApplet;
+import java.awt.Graphics;
 
 public abstract class Entidade {
 	protected Ponto centro = new Ponto(0, 0);
@@ -27,7 +27,7 @@ public abstract class Entidade {
 		return dx * dx + dy * dy <= tam * tam;
  	}
 	
-	public abstract void desenha(PApplet app);
+	public abstract void desenha(Graphics g);
 	public void processaColisao(Entidade entidade) {
 		
 	}

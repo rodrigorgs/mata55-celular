@@ -1,15 +1,17 @@
 package br.ufba.mata55.celular;
 
-import processing.core.PApplet;
+import java.awt.Color;
+import java.awt.Graphics;
 
 public class Celula extends Entidade {
 	
-	public void desenha(PApplet app) {
-		centro.setX(app.mouseX);
-		centro.setY(app.mouseY);
+	public void desenha(Graphics g) {
+		// TODO
+		centro.setX(Controle.mouseX);
+		centro.setY(Controle.mouseY);
 		
-		app.fill(255, 255, 255);
-		app.ellipse(centro.getX(), centro.getY(), tamanho, tamanho);
+		g.setColor(Color.WHITE);
+		g.fillOval(centro.getX() - tamanho / 2, centro.getY() - tamanho / 2, tamanho, tamanho);
 	}
 
 	public int getTamanho() {
