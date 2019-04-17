@@ -2,22 +2,17 @@ package br.ufba.mata55.celular;
 
 import processing.core.PApplet;
 
-public class Celula {
-	private int tamanho = 10;
-	private int x;
-	private int y;
+public class Celula extends Entidade {
 	
 	public void desenha(PApplet app) {
-		x = app.mouseX;
-		y = app.mouseY;
+		centro.setX(app.mouseX);
+		centro.setY(app.mouseY);
 		
 		app.fill(255, 255, 255);
-		app.ellipse(x, y, tamanho, tamanho);
+		app.ellipse(centro.getX(), centro.getY(), tamanho, tamanho);
 	}
 
 	public int getTamanho() {
 		return tamanho;
 	}
-	
-	
 }
